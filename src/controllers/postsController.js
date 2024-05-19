@@ -1,27 +1,27 @@
-const postsModel = require('../models/posts.model')
+const postsDatabase = require("../models/postsDatabase");
 
-const getPostsController = async (req, res) => {
+const getPostsCon = async (req, res) => {
   try {
-    const posts = await postsModel.getAll()
-    res.json(posts)
+    const posts = await postsDatabase.getAll();
+    res.json(posts);
+    console.log("Obtenido");
   } catch (error) {
-    console.log(error)
-    res.status(500).json({msg: "Internal server error"})
+    console.log(error);
   }
-}
+};
 
-const addPostController = async (req, res) => {
-  const newPost = req.body
+const addPostCon = async (req, res) => {
+  const postBody = req.body;
   try {
-    const post = await postsModel.addPost(newPost)
-    res.json(post)
+    const post = await postsDatabase.addPost(postBody);
+    res.json(post);
+    console.log("Enviado");
   } catch (error) {
-    console.log(error)
-    res.status(500).json({msg: "Internal server error"})
+    console.log(error);
   }
-}
+};
 
 module.exports = {
-  getPostsController,
-  addPostController
-}
+  getPostsCon,
+  addPostCon,
+};

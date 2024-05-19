@@ -1,6 +1,6 @@
-const router = require('express').Router()
-const postsRoutes = require('./posts/postsRouter')
+const router = require("express").Router();
+const posts_routes = require("./posts/postRouter");
 
-router.use('/posts', postsRoutes)
+router.use("/posts", posts_routes);
 
-module.exports = router
+module.exports = router;
